@@ -1,0 +1,107 @@
+package base;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+// QueryServlet 실행 시 에러 발생
+@WebServlet("/query")
+public class QueryServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String p1 = request.getParameter("p1");
+		int p2 = Integer.parseInt(request.getParameter("p2"));
+		String p3[] = request.getParameterValues("p3");
+		out.print("<ul>");
+		out.print("<li>p1 : "+ p1 +"</li>");
+		out.print("<li>p2 : "+ p2 +"</li>");
+		for(int i=0; i < p3.length; i++)
+			out.print("<li>p3["+i+"] : "+ p3[i] +"</li>");
+		out.print("</ul>");
+		out.close();		
+	}
+}
+
+
+
+
+
+
+HTTP 상태 500 – 내부 서버 오류
+타입 예외 보고
+
+메시지 null
+
+설명 서버가, 해당 요청을 충족시키지 못하게 하는 예기치 않은 조건을 맞닥뜨렸습니다.
+
+예외
+
+java.lang.NumberFormatException: null
+	java.base/java.lang.Integer.parseInt(Integer.java:614)
+	java.base/java.lang.Integer.parseInt(Integer.java:770)
+	base.QueryServlet.doGet(QueryServlet.java:19)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+비고 근본 원인(root cause)의 풀 스택 트레이스를, 서버 로그들에서 확인할 수 있습니다.
+
+
+19행에서 에러가 발생 
+에러는 null
+null 이므로 .NumberFormatException 에러가 발생했다.
+이유는 숫자를  null로 읽을 수 없다.
+
+500은 찾다가 에러 발생했다.
+
+
+///////////////////////////////////////////////////////
+이페이지의 에러는 밑에서 위로 읽는다.
+
+첫번째로 에러 발생   org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+
+두번째로 에러 발생
+javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+
+세번째로 에러 발생
+javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+
+네번째
+base.QueryServlet.doGet(QueryServlet.java:19)
+
+
+	base.QueryServlet.doGet(QueryServlet.java:19)  19행에서 numberformat 에러 발생
+  
+  request.getParameter는 쿼리 문자열을 추출하는 부분인데 우리가 안주다 보니 null이 발생 inteer.parseInt를 하려다 보니 null이어서
+  
+  500이라는 응답 코드와 함께 에러 발생
+  
+  
+  //////////////////////////////////////////
+  
+  해결방법은
+  
+  p1은 문자열로 준다.
+  http://localhost:8080/edu/query?p1=dooly&p2=100&p3=duke&p3=olaf&p3=heedong
+  
+  
+  
+  getParmeter는 value  어떤네임에 전달되는 value가 하나이면 getParameter이고  리턴값이 스트링형이고
+  
+  어떤 네임에 전달되는 value가 여러개이면 getParameterValues이고 리턴값은 스트링형 배열이다.
+  
+  (getParameterValues 하나의 값에 여러 value가 오는것 배열을 불러오는것)
+  
+  
+  
+  ///////////////////////////////////////
+  
+  회원가입과 같은 서버프로그램을 만들겠다 유저들에게 입력폼을 제시해주는것이 form 태그이다.
+  
