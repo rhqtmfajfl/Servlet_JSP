@@ -1,0 +1,65 @@
+package base;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/greeting")
+public class GreetingServlet extends HttpServlet  {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			LocalDate currentDate = LocalDate.now();
+			DayOfWeek dayOfWeek = currentDate.getDayOfWeek(); //영문으로 나온다.
+			
+      //날짜 예시
+      LocalDate date = LocalDate.of(2021.12.28);
+      DayOfWeek dayOfWeek = date.getDayOfWeek();
+      String day = dayOfWeek.getDisplayNmae(TextStyle.NARROW,Local.KOREAN);
+      
+      
+      
+      
+      
+//			int dayOfWeekNumber = currentDate.getValue();
+
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			
+		
+			out.print("<hr>");
+			if(request.getParameter("name") == null) {
+			out.print("<h2> 손님님! 반가워요 오늘은 "+dayOfWeek.getDisplayName(TextStyle.NARROW, Locale.KOREAN) + "요일 입니다!!</h2>");
+			}
+			else {
+				out.print("<h2>"+ request.getParameter("name")+"님! 반가워요 오늘은 "+dayOfWeek.getDisplayName(TextStyle.NARROW, Locale.KOREAN) + "요일 입니다!!</h2>");
+
+			}
+			out.close();
+			System.out.println("서블릿 출력");
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
