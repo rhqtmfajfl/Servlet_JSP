@@ -1,0 +1,93 @@
+package base;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/visitorget")  //404 에러가 발생하면 오버라이딩 확인
+public class VisitorGetServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		LocalDateTime currentDate = LocalDateTime.of(now.getYear(),now.getMonth(),now.getDayOfMonth());
+		String formatDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"));
+  
+  //  DateTimeFormatter formatter = DateImeFormatter.ofPatter("yyyy년 MM월 dd일");
+  //  String date = LocalDate.now().format(formatter
+
+
+String name = request.getParameter("stname"); //stname 이름 받아오기
+		String op = request.getParameter("op");  // 
+
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		
+		
+//out.printf("<h1> %s님이 %s에 남긴 글입니다.</h1>", name, date); // 도 가능하다.
+		out.print("<h1>"+ name +"님이"+ formatDate +"에 남긴 글입니다!!</h1>");
+		out.print("<hr>");
+		out.print("내용 : " + op );
+		
+		 
+		out.print("<br>");
+		out.print("<a href='/edu/htmlexam/visitorForm.html'>"
+				+ "입력화면으로</a>");
+		
+		out.close();  //웬만하면 close()를 하는 것 이 좋다.
+	}
+
+}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="GET" 
+	    action="http://localhost:8080/edu/visitorget">  //
+		<h1>글을 남겨 주세요</h1>
+		
+		<br>
+		<hr>
+		이름 : <input type="text" name="stname" required><br>
+		
+		<br>
+		
+		남기고자 하는 의견 : 
+		
+		<br>
+		<textarea name="op" rows="10" cols="50"></textarea><br>
+		
+
+		<input type="submit" value="등록">
+		<input type="reset" value="재작성">
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
