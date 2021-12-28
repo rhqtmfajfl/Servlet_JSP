@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	    <form method="GET" 
+	    action="http://localhost:8080/edu/querytest">
+		이름 : <input name="stname" value="듀크" required><br>  //기본으로 듀크가 이름의 값에 들어가 있다. value에 듀크가 들어가 있다.
+		암호 : <input type="password" name="pwd"><br>   //타입은 password
+		나이 : <input type="number" name="age"><br>   //number 은 나이 를 숫자로 받기
+		성별 : <input type="radio" name="gender" value="남자">남자   //,radio 형식으로 이름은 name gender
+		<input type="radio" name="gender" value="여자">여자
+		<br>
+		
+		취미 : 
+		피아노 <input type="checkbox" name="hobby" value="피아노">
+		수영 <input type="checkbox" name="hobby" value="수영">
+		독서 <input type="checkbox" name="hobby" value="독서">
+		게임 <input type="checkbox" name="hobby" value="게임">
+		<br>
+	
+		좋아하는 색 : 
+		<select name="color">
+		    <option value=""></option>
+			<option value="빨강색">RED</option>
+			<option value="파랑색">BLUE</option>
+			<option value="노랑색">YELLOW</option>
+		</select>
+		<br>
+		
+		좋아하는 음식 :
+		<br> 
+		<select name="food" size="4" multiple>   <select name="food" size="4" multiple>
+			<option value="라면">라면</option>
+			<option value="냉면">냉면</option>
+			<option value="짜장면">짜장면</option>
+			<option value="햄버거">햄버거</option>
+			<option value="닭강정">닭강정</option>
+			<option value="육회">육회</option>
+		</select>
+		<br>
+		
+		의견 : 
+		<br>
+		<textarea name="op" rows="10" cols="50"></textarea><br>
+		
+		<input type="hidden" name="h_1" value="hidden으로 보낸 첫 번째 내용">
+		<input type="hidden" name="h_2" value="hidden으로 보낸 두 번째 내용"> 
+    //네입과 value는 적절하게 작성하는데
+    textare가 있고 hidden이 있어도 화면에는 아무것도 나타나지 않는다.
+    input은 submit
+		
+		<input type="submit" value="보내기">   이때 보내기가 submit의 라벡이 된다.
+		<input type="reset" value="다시작성하기">
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+http://localhost:8080/edu/querytest?stname=%EC%98%AC%EB%9D%BC%ED%94%84&pwd=123jhkasdflasdf&age=123&gender=%EB%82%A8%EC%9E%90&hobby=%ED%94%BC%EC%95%84%EB%85%B8&hobby=%EC%88%98%EC%98%81&hobby=%EB%8F%85%EC%84%9C&hobby=%EA%B2%8C%EC%9E%84&color=%EB%B9%A8%EA%B0%95%EC%83%89&food=%ED%96%84%EB%B2%84%EA%B1%B0&food=%EB%8B%AD%EA%B0%95%EC%A0%95&food=%EC%9C%A1%ED%9A%8C&op=ffgdfgsdfg%0D%0A%0D%0Aafasdfasdf&h_1=hidden%EC%9C%BC%EB%A1%9C+%EB%B3%B4%EB%82%B8+%EC%B2%AB+%EB%B2%88%EC%A7%B8+%EB%82%B4%EC%9A%A9&h_2=hidden%EC%9C%BC%EB%A1%9C+%EB%B3%B4%EB%82%B8+%EB%91%90+%EB%B2%88%EC%A7%B8+%EB%82%B4%EC%9A%A9
