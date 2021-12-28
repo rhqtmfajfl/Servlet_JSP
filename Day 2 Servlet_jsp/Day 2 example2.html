@@ -23,6 +23,72 @@
 </html>
 
 
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>입력폼 학습</h1>
+<hr>
+<form method="get"action="http://localhost:8080/edu/query">  //원래는 요청되는 url의 전체를 다주는게 맞다 이런게 서버에게 접속하여 8080을 요청하겠다고 전달하는 것이다.(포트번호, 서버)프로토콜 명 부터 생략할 수 있다.
+이름 <input type="text" name="p1" required><br>
+나이 <input type="number" name="p2"><br> <!-- HTML5 -->
+좋아하는 음식 <br>
+햄버거 <input type="checkbox"  name="p3" value="햄버거">
+비지찌게 <input type="checkbox"  name="p3" value="비지찌개">
+회덮밥 <input type="checkbox"  name="p3" value="회덮밥">
+돈까스 <input type="checkbox"  name="p3" value="돈까스"><br>
+  
+<input type="submit" value="전송하기">
+<input type="reset" value="초기상태로">
+</form>
+</body>
+</html>
+
+
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>입력폼 학습</h1>
+<hr>
+<form method="post"action="/edu/query">   여기서 method를 post로 바꾸면 이걸 확인하기위해서는 해당 페이지의 오른쪽 ㅂㅓ튼에서 페이지 소스 보기 하면 되낟.
+이름 <input type="text" name="p1" required><br>
+나이 <input type="number" name="p2"><br> <!-- HTML5 -->
+좋아하는 음식 <br>
+햄버거 <input type="checkbox"  name="p3" value="햄버거">
+비지찌게 <input type="checkbox"  name="p3" value="비지찌개">
+회덮밥 <input type="checkbox"  name="p3" value="회덮밥">
+돈까스 <input type="checkbox"  name="p3" value="돈까스"><br>
+  
+<input type="submit" value="전송하기">
+<input type="reset" value="초기상태로">
+</form>
+</body>
+</html>
+
+
+하지만 ㅇ여기서 이것을 실행하게 되면 에러가 발생하게 된다.
+서버 방식과 클라이언트가 지원하는 방식이 맞지 않으면 에러가 발생한다.
+
+
+
+
+
+
+
+
+
+
+
  
 
 
