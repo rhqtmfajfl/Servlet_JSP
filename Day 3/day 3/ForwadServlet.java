@@ -32,7 +32,41 @@ public class ForwardServlet extends HttpServlet {
 
 
 
+URL, 절대 URI, 상대 URI
 
+<img src=""> 이미지에 대한 정보를 줄때 url, 절대 uri, 상대 uri를 줘도 된다.
+	
+http://localhost:8080/edu/images/xxx.png
+/edu/images/xxx.png
+/edu로 싲가하면 웹앱을 찾아간다.
+	
+이미지 밑에 xxx.png를잧아갅다.
+	/ 절대 를 찾아간다는 말은 /edu/images/xxx.png
 
+../images/xxx.png 이런식으로 줬었다.
 
+webapp - 밑에 htmlexam과
+       - images가 있다.
+
+	../images/xxx.png 이런식으로 줬었다. 
+	/ 이런 식으로 주게 되면 이미지가 안나온다.
+	/ 하지만 절대 경로로 주면 된다.
+	
+http://localhost:8080/edu/forward
+
+http://localhost:8080/edu ../images/xxx.png 이렇게 적용된다.
+
+그러면 하나 올라갔다가 이미지를 찾기 /때문에 
+
+edu가 아예 없는 상태로
+
+http://localhost:8080/images/xxx.png  이런식으로 찾게 된다.
+
+그러므로 
+ttp://localhost:8080/edu/images/xxx.png 이렇게 주던지
+/edu/images/xxx.png 이렇게 줘야 한다.  얘는 서버주소와 포트번호가 자동으로 붙는다.
+	
+
+../images/xxx.png 얘는 사용하는게 그때 그때 다르다.	
+	
 
