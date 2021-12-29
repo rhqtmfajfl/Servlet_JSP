@@ -202,6 +202,35 @@ WAS와 브라우저가 약속에의해서 한다.
 
 
 
+///////////////////////////////////
+18 페이지
+
+[ HttpSession 의 기타 주요 메서드 ]
+public Enumeration getAttributeNames()   //이름들만 출력하는 객체다
+세션에 등록된 객체들의 이름을 열거한다. 
+
+public long getCreationTime() 
+1970. 1.1 GMT 부터 세션이 만들어졌을 때까지의 시간을 밀리초의 단위로 리턴한다.
+
+public String getId() 
+세션에 지정된 세션 ID를 리턴한다. 
+
+public long getLastAccessedTime()
+클라이언트 요청이 마지막으로 시도된 시간을 밀리초로 리턴한다.
+
+public int getMaxInactiveInterval()
+클라이언트의 요구가 없을 때 서버가 현재의 세션을 언제까지 유지할지를 초시간 단위로 리턴한다. 
+이때 디폴트 세션마감시간은 30분으로 지정되어 있다.    ----마지막으로 요청하고나서부터 더이상 요청안하는 시간
+
+
+
+public boolean isNew() 
+서버측에서 새로운 세션을 생성한 경우에는 true를 리턴하고 기존의 세션이 유지되고 있는 경우라면
+ false를 리턴한다.
+ 
+public void setMaxInactiveInterval(int seconds)
+세션 유지 시간을 설정한다. 이 시간이 지나면 세션은 자동 종료(HttpSession객체 삭제)된다. 
+
 
 
 
