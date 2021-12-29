@@ -1,0 +1,55 @@
+DAY 3 
+
+읽어올 예정인데 이미지 읽어오려면 입력용 바이트 스트림을 읽어오면 오디ㅏ.ㄴ
+
+INPUT.~~~
+
+
+입력은 ~~~FILEREADER, F
+
+java.io패키지는 입출력 기능의 API들과 파일을 생성하거나 파일에 대한 정보를 점검하는 기능의 API를 제공하고 있
+으며 입출력 하는 단위와 입출력 대상에 따라서 다양한 인터페이스와 클래스로 구성되어 있다. java.io 패키지의 API
+들 중에서 스트림을 이용하여 파일에 대한 입출력을 처리하는 기능의 클래스들인 FileReader, FileWriter, 
+FileInputStream, FileOutputStream 클래스와 파일 정보를 점검하거나 파일을 생성 삭제하는 기능을 제공하는 File클래
+스와 기능과 사용 방법에 대하여 소개한다.
+
+
+출력용
+ FileReader, FileWriter
+ 
+ 
+ 
+입력용 
+FileInputStream, FileOutputStream 클래스와 파일 정보를 점검하거나 파일을 생성 삭제하는 기능을 제공하는 File클래
+
+스와 기능과 사용 방법에 대하여 소개한
+
+
+
+
+스캐너와 표준 입출력도 소개가 되어있고
+
+
+FILE 객체 에대한 것
+
+FILE 객체를 생성해서 FILE 에 대해서 설명
+
+
+표준 입출력에대해서 설명을 했다.
+
+
+
+CONSOLE도 있는데 이건 많이 안쓴다.
+
+
+
+OUTPUT.PRINTF나 
+
+
+PRINTF를 쓸때 포맷문자도 소개 되어있다.
+
+
+
+
+
+
