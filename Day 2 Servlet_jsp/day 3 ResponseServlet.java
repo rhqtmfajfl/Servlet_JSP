@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet({ "/getHTML", "/getXML", "/getJSON", "/getImage" })   //servlet은 하난데 url case는 4가지로 나눠진다.
+//텍스트 3개 이미지 1개
 
 //temp에 넣어주세요 라는 파일의 자료를
 
@@ -46,7 +47,10 @@ public class ResponseServlet extends HttpServlet {
 		File f = new File(filename);  //file input stream
 		// api 이름ㅇ ㅣreader나 writer 르ㅗ 끝나면 문자를 읽을때 사용  text에서 사용
 		FileInputStream fis = new FileInputStream(f);
-		response.setContentType(contentType);
+		response.setContentType(contentType);    
+		//클라이언트에게 GET WRITE
+		//GETOUTPUTSTREAM을 쓰는 이유는 이때 리터 되는 객첵는 서블릿 아웃풋스트림 객체이다.  서블릿 아웃풋스트림객체는?
+		// 이미지
 		if(contentType.startsWith("image")) {
 			byte[] content = new byte[(int)f.length()];
 			ServletOutputStream sos = response.getOutputStream();
@@ -54,9 +58,18 @@ public class ResponseServlet extends HttpServlet {
 			sos.write(content);			
 			sos.close();
 		} else {
-			InputStreamReader isr = new InputStreamReader(fis, "utf-8");
-			BufferedReader br = new BufferedReader(isr);
-			PrintWriter out = response.getWriter();
+			InputStreamReader isr = new InputStreamReader(fis, "utf-8"); //바이트스트림을 문자스트림으로 바꿔주는 것이다.
+			//이름안에 INPUT도 있고 READER도 있다 읽기모드로 하는 것을 쓰기용으로 변환해주는 것이다.
+			//UTF-8에 맞게 동작시키겠다.
+			//InputStreamReader  문자단위로 읽어들인다.
+				
+				InputStreamReader는 바이트 단위로 읽어 들이는 InputStream을 통해 데이터를 읽어 들여 문자 단위로 읽어 들이는 방식으로 변형한다는 의미이며,
+OutputStreamWriter는 바이트 단위로 쓰는 OutputStream을 이용해서 문자 단위로 쓰는 것을 바이트 단위로 쓰도록 변형한다는 것을 의미합니다.
+	
+	
+			BufferedReader br = new BufferedReader(isr);  //성능을 높이기 위해서 버퍼링리더 사용
+			PrintWriter out = response.getWriter();   // 텍스트를 응답할때는 response.getWriter()
+			//바이너리를 응답할때는 GETOUT
 			String line = null; 
 			while((line = br.readLine()) != null) 
 				out.println(line);
@@ -67,3 +80,12 @@ public class ResponseServlet extends HttpServlet {
 		fis.close();
 	}
 }
+
+
+
+
+CONTENT TYPE?
+	Content-Type: text/html; charset=utf-8
+Content-Type: multipart/form-data; boundary=something
+
+컨텐츠의 컨텐츠 유형이 실제로 무엇인지를 알려줍니다.
