@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testxml>
+	<name>자바스크립트</name>
+	<age>21</age>
+	<kind>웹앱개발 전용 OOP 언어</kind>
+</testxml>
+
+
+목적에 맞춰서 태그를 직접 설계 할 수 있는 것이 xml이다
+
+기업들은 문서의 스키마를 정해놓고 문서를 작성하게 한다.
+
