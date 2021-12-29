@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet({ "/getHTML", "/getXML", "/getJSON", "/getImage" })   //servlet은 하난데 url case는 4가지로 나눠진다.
 
+//temp에 넣어주세요 라는 파일의 자료를
 
 public class ResponseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +24,8 @@ public class ResponseServlet extends HttpServlet {
 		System.out.println(uri);
 		String filename = "";
 		String contentType = "";
+		
+		//텍스트 형식
 		if (uri.endsWith("getHTML")) {   //추출된 uri가 getHTML로 끝나면 밑에 부분으로 출력해라.
 			filename = "c:/Temp/sample.html";	
 			contentType = "text/html; charset=utf-8";
@@ -34,9 +37,14 @@ public class ResponseServlet extends HttpServlet {
 			contentType = "text/json; charset=utf-8";
 		} else {
 			filename = "c:/Temp/trans_duke.png";	   //file IO 운영체제에 알맞는 PATH 정보
-			contentType = "image/png";
+			contentType = "image/png";  //이부분에서 png 형식이다라고 클라이언트에게 알려준다.
 		}
-		File f = new File(filename);
+		
+		
+		
+		
+		File f = new File(filename);  //file input stream
+		// api 이름ㅇ ㅣreader나 writer 르ㅗ 끝나면 문자를 읽을때 사용  text에서 사용
 		FileInputStream fis = new FileInputStream(f);
 		response.setContentType(contentType);
 		if(contentType.startsWith("image")) {
