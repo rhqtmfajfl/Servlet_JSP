@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="post" action="http://localhost:8080/edu/reservation">
+
+<h1>자연 휴양림 예약 서비스</h1>
+<br>
+<hr>
+<form>
+예약자명 : <input type = "text" name="stname" required><br>
+예약 암호 : <input type="password" name="pwd"><br>
+	
+				
+		휴양림 선택 : 
+		산음 <input type="radio" name="hu" value="산음">
+		중미산 <input type="radio" name="hu" value="중미산">
+		유명산 <input type="radio" name="hu" value="유명산">
+		아세안 <input type="radio" name="hu" value="아세안">
+		<br>
+		
+	
+				
+		추가 요청 : 
+		바베큐 <input type="checkbox" name="chu" value="바베큐">
+		수영장 <input type="checkbox" name="chu" value="수영장">
+		낚시 <input type="checkbox" name="chu" value="낚시">
+		조식 <input type="checkbox" name="chu" value="조식">
+		<br>
+		
+		
+		날짜 : <input type='date' name='date'><br>
+		
+		
+		
+		
+		<input type="submit" value="보내기">
+		<input type="reset" value="다시 작성하기">
+		</form>
+		
+</body>
+</html>
+  
+  
+  
+  
+  package base;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/reservation")
+public class ReservationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");  //post일때는 쿼리 추출하기 전에 캐릭터 셋을 제대로 알려줘야 잡아내서 디코딩이 이뤄진다.
+
+		String name = request.getParameter("stname"); //stname 이름 받아오기
+		String pwd = request.getParameter("pwd");  //예약 암호
+  
+  
+                                                        //하나의 name에 하나의 이름만 오면 getParameter 여러개의 이름이 오면 getParameterValues
+		String hu = request.getParameter("hu");
+		String[] chu = request.getParameterValues("chu");
+
+		
+		String date = request.getParameter("date");
+		LocalDate formatDate = LocalDate.parse(date);     //LocalDate와 LocalDateTime 처음에는 java.localDate만 있었다 그러다 나중에
+                                                        localDate는 나중에 java 8 부터 추가된것이다.
+                                                        LocalDate (자바의 정석에 잘 나와 있다 최신판에)
+                                                            
+                                                              
+  
+
+		String test_date = formatDate.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"));
+
+		
+		response.setContentType("text/html; charset=UTF-8");  //test/html  charset을 제대로 안하면 한글이 깨진다.
+                                                          // response.setContentType의 역할
+		PrintWriter out = response.getWriter();
+		
+		
+		
+		
+		out.print("<h1>"+ name +"님의 예약 내용</h1>");
+		out.print("<hr>");
+		
+		
+		
+		out.print("<li> 휴양림 : ");
+		if (hu == null) {
+			out.print("선택 제대로 하세요 -ㅅ-");	
+		}
+		else {
+			out.print(hu);
+		}
+		out.print("</li>");
+		
+		
+		
+		out.print("<li> 추가 요청 : ");
+			if (chu == null) {
+				out.print("선택 제대로 하세요 -ㅅ-");	
+			}
+			else {
+				for (int i=0 ; i<chu.length ; ++i) {
+					if (i == chu.length -1) {
+						out.print(chu[i]);
+						break;
+					}
+					out.print(chu[i] +",");
+				}
+			}
+		out.print("</li>");
+		
+		//out.print(String.format("<li> 예약날짜 : %1$+Y년, %1$+m월 %1$+d일</ul>",date))   //
+		/out.print(String.format("<li> 예약날짜 : %+Y년, %+m월 %+d일</ul>",date,date,date))  //  $를 안쓰면 date를 하나하나 다 지정 해줘야 한다.
+		out.print("<li> 예약 날짜 : " + test_date);
+		
+		out.print("</li>");
+		
+		
+//		out.print("<h2>요청 방식 : "+request.getMethod()+"</h2>");
+//		out.print("<h2>Query 문자열(요청 파라미터) : "+request.getParameter("name")+"</h2>");
+		out.close();
+		System.out.println("POST 방식 수행");
+	}
+
+}
+
+  
+  
+  
