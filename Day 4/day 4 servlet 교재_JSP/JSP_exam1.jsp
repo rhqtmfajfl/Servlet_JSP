@@ -1,6 +1,9 @@
 language="java" jsp 에서 실행되는 언어는 자바이다라는 의미  
 contentType="text/html; charset=UTF-8"  
 
+jsp를 servlet으로 변화해라고 할때 사용하는 지시자 태그
+<%@  %> 태그
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
