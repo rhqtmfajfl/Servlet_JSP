@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Query 문자열 추출(GET&amp;POST)</h1>    ////////    GET&amp;POST 는 특수문자 엔티티라고 하면 나온다.  특수문자를 대신해 작성하는 코드이다.
+<hr>
+<% 
+	if(request.getMethod().equals("POST")){
+		request.setCharacterEncoding("utf-8");
+	}
+%>
+
+<h2>당신의 이름은<%= request.getParameter("name") %> 이군요!!</h2>  
+<a href= "<%= request.getHeader("referer") %>">입력화면으로</a>    // request.getHEADER 이 JSP를 요청한대상이 누군가를 표시
+                                                                  // 직접 요청 할때는 꺼낼것이 없기 때문에 uri이나 url을 주는 것은 referer을 주는 것은 가각 장점이 있다.
+
+</body>
+</html>
+
+
+메소드 선언시 선언문 태그
