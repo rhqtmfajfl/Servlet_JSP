@@ -37,7 +37,7 @@ public class UploadServlet extends HttpServlet {
 		
 		
 		for (Part part : parts) {  //parts를 리턴받는다.
-			String fileName = part.getSubmittedFileName(); //이부분  어떤의미지?
+			String fileName = part.getSubmittedFileName(); //이부분  어떤의미지?  내가 지정한 파일의 이름과 확장자명을 같이 가져온다.
 			
 			
 			if (fileName != null) {  //업로드 되는 파일에 대한 파트를 입력받아서 null이 아니면
