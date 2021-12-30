@@ -114,12 +114,27 @@ jsp
 
  표현식 태그는 안에 식만 올 수 있다.
 
+
+////////////////////
+여기는 액션태그 기능이 이미 정해져 있는 태그이다.
+
 <jsp:include page=”…” />
 <jsp:forward page=”…” />
+
+
+//////////////////////
 <jsp:useBean id=”…” class=”…” scope=”…” />
 <jsp:setProperty name=”…” property=”…” />
 <jsp:getProperty name=”…” property=”…” />
-<jsp:plugin …….. />
+
+mvc 패턴에서 어떻게 하는 지 학습한다.
+
+////////////////////////
+<jsp:plugin …….. />   
+
+
+
+
  <jsp:param name=”…” value=”…” />
 
 
