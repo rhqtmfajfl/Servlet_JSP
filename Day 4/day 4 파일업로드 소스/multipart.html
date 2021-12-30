@@ -14,17 +14,29 @@
 	<form action="/edu/part"  enctype="multipart/form-data" 
 	                           method="post"> 
 		<label>작성자 이름 :  <input type="text" name="myname" /> </label><br>
-		<label>작성자  폰번호 : <input type="text" name="myphone" /> </label><br>
-		<label>첨부 파일 :  <input type="file" name="myfile" multiple/></label><br>
+		<label>작성자  폰번호 : <input type="text" name="myphone" /> </label><br>  // myphone이라는 이름이르
+		<label>첨부 파일 :  <input type="file" name="myfile" multiple/></label><br> // myfile multip
+		name은 이름을 여러개 할 수 잇다.
+		
 		<input type="submit"	value="전송" />
 	</form>
 </body>
 </html>
 
 
+get으로는 file업로드를 처리할 수없다.
+
+	<label>작성자 이름 :  <input type="text" name="myname" /> </label><br>
+		<label>작성자  폰번호 : <input type="text" name="myphone" /> </label><br>
+		<label>첨부 파일 :  <input type="file" name="myfile" multiple/></label><br>
+
+실제 입력받는 곳
+
+
+		<input type="submit"	value="전송" />
+ submit 하는 곳
 
 
 
-
-
+여러개 업로드 하려면 multi가 필요하다
 
