@@ -14,18 +14,31 @@
 <form  method="post"  action="/edu/upload"    //내가 업로드한 파일의 이름 나이 이름이 나온다.
       
                enctype="multipart/form-data" >
+	
   작성자<input type="text" name="theAuthor"><br>
+	
   나이<input type="text" name="theAge"><br>
+	
   파일<input type="file" name="theFile" ><br>
+	
   <input type="submit" value="업로드">
+	
 </form>
 <hr>
 <h1>file 타입의 input 태그 테스트(multiple)</h1>
+	
 <form  method="post" enctype="multipart/form-data" 
+      
                 action="/edu/upload">
+	
   작성자<input type="text" name="theAuthor"><br>
+	
   나이<input type="text" name="theAge"><br>
-  파일<input type="file" name="theFile"  multiple><br>
+	
+	
+  파일<input type="file" name="theFile"  multiple><br>   ///여기서 multiple이라는 속성을 사용했기 때문에 여러 파일을 올리수 있다.
+	
+	
   <input type="submit" value="업로드">
  </form> 
 </body>
