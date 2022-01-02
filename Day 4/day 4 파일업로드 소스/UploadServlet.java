@@ -15,6 +15,9 @@ import javax.servlet.http.Part;
 @WebServlet("/upload")
 @MultipartConfig(location = "c:/Temp/uploadtest")  //이거를 빼먹으면 밑에서 Collection(Part)에서 에러 발생한다.
 
+//파일 저장 위치
+
+
 public class UploadServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
