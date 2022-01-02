@@ -49,13 +49,38 @@
   하지만 jsp의 세션 객체가 30분이상 서버에 요청을 안했을 때 삭제 된다.
     
 	<li><%= application.getServerInfo() %></li>  내장 객체 변수이다.     아파치 톰캣....
+		String getServerInfo()는 서버 정보를 구한다. 웹 컨테이너 이름과 버전 리턴,  jsp 컨테이너에 대한
+		/ 정보)
+	
 	<li><%= application.getContextPath() %></li>	 내장 객체 변수이다.
+	request.getContextPath()하무는 프로젝트 path만 가져온다.
+	
+	// 예 http://localhost:8080/project/list.jsp
+	
+	return /project를 가져온다.
+	
+	
   servlet context를 참조하는 내장객체 변수이다.
   //get방식으로 전달되는거든 
 </ul>
 </body>
 </html>
 
+내장 객체 이외의 함수 
+request.getRequestURI() 함수 = 프로젝트 + 파일경로까지 가져옵니다.
+
+출처: https://yi-chi.tistory.com/12 [2chi]
+[return]        /project/list.jsp  를 가져옵니다 ㅎ
+
+
+
+String url = request.getRequestURI.split("/");
+
+String Name = url[url.length -1];       // list.jsp
+
+
+
+출처: https://yi-chi.tistory.com/12 [2chi]
 
 
 l-value = r-value
