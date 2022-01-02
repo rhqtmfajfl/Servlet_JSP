@@ -16,6 +16,9 @@
 %>
 
 <h2>당신의 이름은<%= request.getParameter("name") %> 이군요!!</h2>  
+
+// getParameter()메서든ㄴ 사용자가 입력한 데이터를 가지고 올 수 있다.
+
 <a href= "<%= request.getHeader("referer") %>">입력화면으로</a>    // request.getHEADER 이 JSP를 요청한대상이 누군가를 표시
                                                                   // 직접 요청 할때는 꺼낼것이 없기 때문에 uri이나 url을 주는 것은 referer을 주는 것은 가각 장점이 있다.
 
@@ -24,3 +27,34 @@
 
 
 메소드 선언시 선언문 태그
+
+
+String id = request.getParameter("id") 를 하면 id변수에는 홍길동이 저장될것이다.
+
+
+
+getParameter는 항상 String 형태로 반환하므로 주의할점은 
+
+
+
+int 타입의 변수에 값을 저장하고 싶다면 형변환을 해줘야함
+
+
+
+int a = Integer.pareInt(request.getParamaeter("id");
+
+(당연 지금 id값은 문자열이므로 오류가 난다)
+
+/// 
+request.getParameter() 메소드에 대한 설명과 예시
+
+HTTP 요청의 파라미터 값을 얻기 위해 사용하는 것이 request.getParameter() 메쏘드입니다.
+
+ 
+
+        가령, 로그인 폼에, ID를 입력하는 <input type="text" name="id">가 있었다면,
+
+        서블릿에서 String strId = request.getParameter("id"); 와 같은 방식으로,
+
+        클라이언트가 입력한 ID가 뭐였는지 알아낼 수 있습니다.
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=sangnam18&logNo=110093843511
