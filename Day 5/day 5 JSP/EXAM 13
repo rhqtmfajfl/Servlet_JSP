@@ -1,0 +1,119 @@
+request 내장 객체
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.Date"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP의 내장 객체들</title>
+</head>
+<body>
+<h2>JSP의 내장 객체들 점검</h2>
+<h3>[ request ]</h3>
+getMethod() : <%=  request.getMethod()  %><br>
+getRequestURI() : <%=  request.getRequestURI()  %><br>
+getHeader("user-agent") : <%=  request.getHeader("user-agent")  %><br>
+<h3>[ out ]</h3>
+<% out.print("<h4>out내장 객체로 출력!!</h4>"); %>
+<h3>[ session ]</h3>
+getId() : <%=  session.getId()  %><br>
+getCreationTime() : <%=  new Date(session.getCreationTime())  %><br>
+<h3>[ response ]</h3>
+getStatus() : <%=  response.getStatus() %><br>
+getBufferSize() : <%=  response.getBufferSize() %><br>
+getContentType() : <%=  response.getContentType() %>
+
+
+<% response.addCookie(new Cookie("myCookie", "myValue")); %>   ------------------> 쿠키정보를 같이 알고자 할때 response.addCookie  
+response.addCookie 사용시 관리자 모드에서 쿠키 확인 가능하다.
+
+<h3>[ application ]</h3>
+getContextPath() : <%=  application.getContextPath()  %><br>
+getServerInfo() : <%=  application.getServerInfo()  %><br>
+getMajorVersion() : <%=  application.getMajorVersion()  %><br>
+<H4>Web Application(/sedu) 디렉토리의 파일 리스트 </H4>
+<% 
+java.util.Set<String> list = application.getResourcePaths("/");
+if (list != null) {
+   Object obj[] = list.toArray();
+   for(int i=0; i < obj.length; i++) {
+      out.print(obj[i]+", ");
+   }
+}
+%>
+</body>
+</html>
+
+
+/////////////////////////////////////////
+
+결과 화면
+JSP의 내장 객체들 점검
+[ request ]
+getMethod() : GET
+getRequestURI() : /edu/jspsrc/exam13.jsp
+getHeader("user-agent") : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
+[ out ]
+out내장 객체로 출력!!
+[ session ]
+getId() : 34947A32F36D46E8AEB89027330C32BF
+getCreationTime() : Mon Jan 03 14:16:55 KST 2022
+[ response ]
+getStatus() : 200
+getBufferSize() : 8192
+getContentType() : text/html;charset=UTF-8
+[ application ]
+getContextPath() : /edu
+getServerInfo() : Apache Tomcat/9.0.56
+getMajorVersion() : 4   was가 지원하는 버전
+
+Web Application(/sedu) 디렉토리의 파일 리스트
+
+/META-INF/, /images/, /WEB-INF/, /cssexam/, /jspsrc/, /htmlexam/,
+
+
+////////////////////////////////////////////
+
+
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
+
+나는 어떤 브라우져야 라고 알리는것  어떤 종류의 브라우져인지
+
+모바일인지 아닌지
+
+모질라 5.0 
+크롬 96.0 
+
+유저 에이전트는 클라이언트로부터 서버에 요청이 갈때 요청 헤더에 담겨져 있는 정보
+
+정보가 어떤 것인지 알려주는 것이다.
+
+request.get parameter
+
+out이라는 내장 객체는 클라이언트의 출력을 담당하는 것이다.
+
+json을 구현할때 실행 결과를 내보내는 방법은 out이라는 방법외에도 표현
+
+
+jsp는 세션 객체가 자동으로 생성되는 서블릿코드가 자동으로 바뀔 때 들어간다.
+
+그렇게 생성된 세션객체를 반들때는 세션이라는 것을 만들어서 들어간다.
+
+getStatus()는 응답 코드이다.
+응답 코드가 
+
+
+
+
+
+한번에 보내지는 크기가 8k 바이트다
+웨프로젝에서 일립가 붙여놓은것 
+
+서블릿을 하나의 서블릿 컨택스트를 edu를 관리하는 것이다.
+
+get context path를 하면
+
+결과에서 edu 자동으로 
