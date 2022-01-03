@@ -28,7 +28,9 @@
                    scrpit 태그에 잇는 코드는 브라우져에서 실행 된다.
 			</script>
       
-      
+      		JSP 태그는 자바코드 영역에서 작성해도 된다.
+		
+		
 			<h2>선택 날짜는 <%= request.getParameter("fdate") %> 이네요..</h2>
 	<% } %>
 </body>
