@@ -8,16 +8,24 @@
 <BODY>
 <% if(request.getParameter("type")==null || 
            request.getParameter("type").equals("admin") ){ %>
-  <jsp:forward page="admin_new.jsp">
+ 
+ 
+ //forward 액션태그    forward를 주는 것이 훨씬더 간단하다. page jsp 지정하면 된다.  
+
+ 
+ <jsp:forward page="admin_new.jsp"> // 파람이라는 메세지가 존재하지 않는다면 여기서 앞에서 / 로 바로 종료하면 된다.
+ 
   	<jsp:param name="message" value="Hi! Administrator" />    //  쿼리를 아무것도 안적으면 ,Hi Administrator가 나온다.
     네임 value 쌍으로 
     
   </jsp:forward>
+  
+  
 <% } else  {%>
   <jsp:forward page="user_new.jsp">
   	<jsp:param name="message" value="Hi! User" />    // 쿼리를 주면  Hi User라고 발생한다.
     
-    forward는 파람이라는 서브 태그를 안쓴다 하면  종료태그를 안주고 작성해도 된다.
+    forward는 파람이라는 서브 태 그를 안쓴다 하면  종료태그를 안주고 작성해도 된다.
     forward는 종료태그없이 작성해도 되고 종료태그를 작성해도 된다.
     	<jsp:param name="message" value="Hi! Administrator" /> 이거는 html과 다르게 닫는 부분에 / 슬래시를 꼭 줘야한다.
       
@@ -38,8 +46,9 @@
       
       param 앞에는 닫는 꺽쇠가 있어야 한다.
       
-      
-      
+      닫는 기호인 /를 없애면 에러 발생
+       
+       
     // 
   </jsp:forward>
 <%} %> 
