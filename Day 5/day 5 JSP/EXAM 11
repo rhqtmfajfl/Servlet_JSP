@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+
 <!DOCTYPE html>
+
 <HTML>
 <HEAD>
 <META charset="UTF-8">
@@ -33,3 +35,61 @@
 
 
 
+GREETING. JSP
+
+<!-- 파일명 : greeting.jsp -->
+<%@ page contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<META charset="UTF-8">
+<TITLE>감사인사</TITLE>
+</HEAD>
+<BODY>
+
+
+<% 
+if(request.getParameter("country").equals("korea")) {   //PARAM이라는 걸로 KOREA 
+PARAM으로 KOREA
+%>
+   <%= "감사합니다." %>
+<%	
+
+
+}
+else if(request.getParameter("country").equals("english")) {
+%>
+   <%= "Thank You." %>
+<%
+}
+else if(request.getParameter("country").equals("japan")) {
+%>
+    <%= "ありがとうございます" %>
+<%
+}
+%>
+</BODY>
+</HTML>
+
+
+
+
+인클루드 지시자는 다른 파일의 내용을 포함시켜서
+
+인클루드 액션 태그는 인클루드 되는애나 
+GREETING.JSP가 그 결과만 포함한다.
+
+인클루드 지시자로 1하나 다른 JSP를 포함시켜서 같이 SERVLET으로 변환한다.
+A.JSP에 대한 내용이 포함되어 있다.
+
+A.JSP가 실행되다가
+
+B.JSP가 실행되는 동안에  A.JSP
+
+실행 자체가 별개로 이루어진다.
+
+소스를 포함하는건 지시자고 실행을 별개로 시키고 결과만 포함하는게 액션 기능이 된다.
+\
+지시자 태그는 파람 같은 것을 쓸수가 없다.
+
+액션 태그는 실행 결과를 포함한다.   이 결과를 비교 할수 있는게 EXAM 10이다.
