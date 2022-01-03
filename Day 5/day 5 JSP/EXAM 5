@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>선언문 태그</h1>
+<hr>
+<%!   ---> 메소드 선언
+///////// 메소드 선언시 선언문 태그 사용해야 한다.
+	int multiply(int n1, int n2) {  
+		return n1 * n2;
+	}      
+%>
+<%    ----> 제일 처음에 실행되는 것
+	int result=0;
+	if(request.getMethod().equals("GET")) {  ///--. GET이면 실행하시오
+  request 내장 객체
+  --JSP는 GET POST를 나누지 않지만 GET을 가져오면 GET으로 실행  요청방식을 체크하게해서 GET이나 POST가 나오게 된다.
+%>   
+		<h3>숫자 2개를 입력하세요</h3>
+		<form method="post" action="/edu/jspsrc/exam5.jsp">
+		
+    // 숫자를 입력할 수 있는 input 태그
+      
+      숫자 1 <input type="number" name="su1"><br>
+      
+			숫자 2 <input type="number" name="su2"><br>
+			<input type="submit">  -----> 여기서 value 값을 안주면 기본값으로 제출이라고 뜬다.  근데 나는 왜 쿼리 전송으로 뜨지?
+		</form>
+<%	
+	} else {
+		int su1 = Integer.parseInt(request.getParameter("su1"));
+		int su2 = Integer.parseInt(request.getParameter("su2"));
+		result = multiply(su1, su2);	
+%>
+		<h2>수행 결과 : <%= result %></h2>   여기서 표현식 태그는 인용부호안에서도 사용이 가능하다.
+		<a href="<%= request.getHeader("referer") %>"> 입력 화면으로 </a>   // 이번요청을하게한 이전페이지의 url을 가져오게 한다.  
+    request.getHeader("referer") 사용시  이전 페이지의 url을 가져온다.
+<%
+	}
+%>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
