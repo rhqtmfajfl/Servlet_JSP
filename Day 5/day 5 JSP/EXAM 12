@@ -8,19 +8,30 @@
 </head>
 <body>
 <h2>include 지시자와 액션태그 비교</h2>
+
 <%-- <hr>
 <%@ include file="date.jsp" %>
 <hr>
 <%@ include file="date.jsp" %>  --%>
 <hr>
+
+
 <jsp:include page="date.jsp" />
 <hr>
 <jsp:include page="date.jsp" /> 
+
+
+
 </body>
 </html>
 
 
 
+처음에는 위의 INCLUDE를 주석처리 해놓고 밑의 JSP로 실행시켜보고
+
+그다음에 INCLUDE FILE를 주석을 풀고 밑에걸 주석하면 에러가 발생한다.
+
+이유는??
 
 
 
