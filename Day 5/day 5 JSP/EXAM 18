@@ -9,6 +9,13 @@
 </head>
 <body>
 <h1 style="font-family: 'Gamja Flower'">지금은
+usebean이 자바의 객체를 생성해주는 것이다.
+
+그래서 useBean 액션 태그로 객체를 생성한다.
+
+사용할 클래스ㄹ를
+그런데 이때 useBean은 아규먼트 안받는것을 한다.
+
 <jsp:useBean id="obj" class="jspbean.Today" />
 <jsp:getProperty name="obj"  property="year" />년 
 <jsp:getProperty name="obj"  property="month" />월 
