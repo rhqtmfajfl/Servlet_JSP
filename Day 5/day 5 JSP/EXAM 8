@@ -1,5 +1,28 @@
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"   errorPage="errorPage.jsp"  %> 
+    pageEncoding="UTF-8"   errorPage="errorPage.jsp"  %>    여기서 errorPage라는 속성을지우면 500에러가 발생한다.
+    500에러의 원인으로 null포인트 에러가 발생한다.
+    
+    16행에서 발생된다. 
+    
+    이유는 null이기 때문에 String.length() 호출 불가
+    
+    500에러화면이 뜨는게 맞는데
+    
+    500 에러를 넣으면 빠른시일내에 
+    고치겠다라고 뜬다
+    
+    jsp의 서버단에서 실행되다가 에러가 발생하면 이 jsp 가 뜬다.
+    
+    여기서 errorPage에 들어갈 수 있는 것은 html도 되고
+    errorPage.jsp도 된다.
+    
+    이에러는 실행되다가 잘못된 상태에서 에러를 넣어야 된다.
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +36,78 @@
      String name = request.getParameter("guestName"); 
 %>
 <h3>당신의 이름은 <%= name %> 이고 이름의 길이는
-           <%= name.length() %> 입니다.</h3>
+           <%= name.length() %> 입니다.</h3>  
+           
+           
+</body>
+</html>
+
+//geustName으로 내가 name을 작성하면  이름의 길이가 나온다.
+그리고 ?뒤에 name을 알지 못한다.
+
+
+
+errorPage.jsp
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+<%@ page isErrorPage="true" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="text-align:center">
+<h2>오류 발생했어욤ㅠㅠ</h2>
+<h3>빠른시일내에 복구하겠습니다...</h3>
+<img src="error.jpg">
+<%	
+    String msg = "오류 원인 : " + exception;	   // exception 변수는 내장객체변수로서 exception이 발생시 사용
+    
+    이 exception은 아무 곳에서는 사용할 수 있는 내장객체가 아니다   다른 애들은 언제든ㄷ지 사용할 수 있는데 exception은 기본적으로 사용할 수 없다.
+    이 exception을 사용하려면  <%@ page isErrorPage="true" %>  isErrorPage 에서 TRUE로 줘야 한다.
+    
+    isErrorPage의 기본 값은 false이다.  
+    
+    jsp 개발시 exception을 사용하여 에러를 발생하게 하려면 
+    
+    errorPage= 에서  <%@ page isErrorPage="true" %>   isErrorPage를 true로 줘야 한다.
+    
+    
+    
+	System.out.println("----------------------------------------");
+	System.out.println(msg);
+	System.out.println("----------------------------------------");	
+	exception.printStackTrace();   -------------> printStackTrace의 결과
+    
+    나온 결과  ->
+->    ----------------------------------------
+->    java.lang.NullPointerException
+	at org.apache.jsp.jspsrc.exam8_jsp._jspService(exam8_jsp.java:134)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+    
+	
+%>
 </body>
 </html>
 
 
 
 
+jsp에서 에러가 낫을때 들ㄴ 페이지에서 error화면을 내보내려면 errorPage이다.
+
+여기서 isErrorPage를 true로 줘서
+
+exception 내장 객체를 사용하게 한다.
+
+이렇게 해서 일반 사용자에게는 에러페이지만 준다.
 
 
-
-
-
+******************
+exception만 따로 isErrorPage를 줘야 사용가능하다.
+*************************
 
 
 
