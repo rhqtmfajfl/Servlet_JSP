@@ -1,0 +1,53 @@
+처음에 EXAM 6를 실행하면 에러가 발생한다.
+처음에는 numberformatexception이 널이 발생하므로 
+
+url뒤에 ?를 붙이고 내가구하고자하는 단 수를 입력한다.
+? dan = 3
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP로 구현한 구구단</title> 
+</head>
+<body>
+<h2>JSP로 구현한 구구단</h2>
+
+////////////여기서 주의할 점은 자바 코드로 나오는 부분은 수행코드로 묶어야 된다.
+
+ <%
+ int dan= Integer.parseInt(request.getParameter("dan"));
+ if (dan <= 9) {    ----------단이 9보다 작으면 이부분을 실행해주는데
+ 
+ ////반복문은 수행문태그를 사용해야하는데
+ 
+ 	for (int i=1;i<=9;i++){
+%>
+
+		 <%= dan %> x <%=i %> = <%=dan*i%><br>
+        ----> 출력하는ㅂ분을 출력문 태그 사용
+<%	
+	}
+ %>
+ 	<hr>
+<%
+	for (int i=1;i<=9;i++){
+		out.print(dan + " x " + i + " = "  + dan*i + "<br>");	
+	}   -----------.> 여기서는전체적으로 for문안에서 반복적으 사용하면 out.print로 묶는게 났다.
+  out이라는 내장객체를 이용해서도 충분히 나타낼 수 있다.
+  
+ } else {     -------------------> 단이 9보다 크다면
+%>
+	<h3 style="color:red">1에서 9사이의 값을 입력해 주세요..</h3>
+<%	
+}
+ %>
+</body>
+</html>
+
+
+
+
+
