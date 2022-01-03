@@ -73,3 +73,20 @@
 <%=request.getParameter("message")%></span>   request.getParameter는 포워드된 값을 꺼낼때도 사용한다.
 </BODY>  
 </HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
