@@ -1,0 +1,151 @@
+<% %> 스크립트릿(수행문) 태그
+  여기 안에 변수를 선언하게되면 지역변수이다..
+  
+  
+  <%! %> 선언문(변수선언, 메서드정의) 태그
+  JSP가 서블릿으로 변환할 때 서블릿의 멤버가 될때 사용된다.
+  여기서는 IF 문 같은 것은 사용 하지 못한다.
+  그래서 멤버 변수 정의나 메소드를 정의할 때 사용한다.
+  
+  
+  
+  <%= %> 표현식  
+  
+  주어진 식의 결과를 표현한다. 아무 구문이나 올 수 없고 출력하고 싶은 식이 된다.
+  
+  자바코드를 표함시킬 수 있는 태그들   -----> <% %> 스크립트릿(수행문) 태그
+                                           <%! %> 선언문(변수선언, 메서드정의) 태그
+                                           <%= %> 표현식
+                                           
+                                           
+                                           
+   액션 태그  
+          
+        <jsp:include page=”…” />
+        <jsp:forward page=”…” />
+        
+        
+        ///이거는 MVC 패턴 시 공부
+        <jsp:useBean id=”…” class=”…” scope=”…” />
+        <jsp:setProperty name=”…” property=”…” />
+        <jsp:getProperty name=”…” property=”…” />
+        
+        
+        <jsp:plugin …….. />   -------> 이것은 애플릿의 수행결과를 표현할 때 사용한다.
+        
+        
+        <jsp:param name=”…” value=”…” />  //포워드나 인클루드 할때 다른 NAME VALUE 쌍이 있을 때 태그하는 것이다.
+        
+        
+        
+        
+        [ 지시자 태그 ]
+      JSP 를 Servlet 으로 변환할 때 지시하고자 하는 내용을 정의하는 태그이다. 지시할 사항에 따라서 다양한 지시자 태그를 지원한다.
+
+
+- page 지시자
+<%@page {attr = value ..} %> 페이지 지시자는
+
+
+- include 지시자
+<%@include {attr = value ..} %>   ---> 같이 서블릿으로 변환하겠다?
+
+
+----------------------------> 이렇게 두개만 거의 배우낟.
+
+- taglib 지시자
+<%@taglib {attr = value ..} %>
+- tag 지시자
+<%@tag {attr = value ..} %>
+- variable 지시자
+<%@variable {attr = value ..} %>
+ - attribute 지시자
+<%@attribute {attr = value ..} %>
+
+    ----------------> 여기는 우리가 직접 태그를 만들어서 사용하는 것이다.
+    
+    
+
+
+ page 지시자 태그
+
+<%@ page [ language="java" ]
+
+
+ [contentType="mimeType [ ; charset=characterSet ]" |
+ "text/html ; charset=ISO-8859-1" ]
+
+
+
+        [ import="{package.class | package.*}, ..." ]
+        
+        [ session="true|false" ]
+                [ errorPage="relativeURL" ]
+                
+        [ contentType="mimeType [ ; charset=characterSet ]" |
+         "text/html ; charset=ISO-8859-1" ]
+         
+        [ isErrorPage="true|false" ]
+        
+        
+        - include 지시자 태그
+        
+        
+           JSP를 서블릿으로 변환하기 전에 이거를 묶어서 보내겠다
+           
+           JSP 코드에서 여러 JSP의 똑같은 내용을 
+           
+           JSPF F는 조각을 의미
+           
+           확장자면ㅇ이 이거면 다른 JSP에 포함되느것을 의미 한다.
+           
+      INCLUDE 지시자는           지정된 JSPF 파일을 인클루드 지시자가 사용ㅇ된 위치에 포함한다.
+        
+            JSPF로 권장하는 거지 JSPF가 아니면 안되는ㄱ ㅓㅅ은 아니다.
+            
+            소스를 JSP 안에 포함시키는 것이다.
+            
+            인클루드 밑에 스크립팅 태그나 액션태그 등이 있다.
+            
+            
+        
+        
+        
+        
+        
+        [ pageEncoding="characterSet | ISO-8859-1" ]
+        
+        
+        /////////////////
+        ▣ JSP의 내장 객체
+        
+        쿼리 추출시 REQUEST.GETpARAMETER가 있다.
+        
+        request http.HttpServletRequest 클라이언트에서 전송되는 다양한 요청 데이터 추출
+
+        response http.HttpServletResponse 응답 시 필요한 기능을 제공
+        
+        
+        session http.HttpSession 클라이언트 별로 생성되는 HttpSession 객체
+application ServletContext application scope 객체 생성과 관리
+
+
+        out jsp.JspWriter 응답용 출력 스트림
+        
+        
+        exception java.lang.Throwable 생성된 예외 객체를 참조
+
+
+        -------> 주로 이설
+        
+        
+        JSP를 설계할때 응답하는데 초점을 맞췄다.    -------------->  out jsp.JspWriter 응답용 출력 스트림
+        
+        
+        
+
+        
+
+
+        
+        
