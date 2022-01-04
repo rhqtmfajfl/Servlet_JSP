@@ -1,0 +1,175 @@
+DAY 6
+
+어떤 JSP를 요청하든 서버에서 만들어진 객체를 여러 서블릿 여러 객체가 공유할숭 있도록 할 수 있다.
+
+세션스코프는 이미 공유한거나 다름없다.
+
+로그인 기능의 JSP에서 사용자 아이디에 해당한는 객체를 리무브하는 것을 보았다.
+
+어떤 목적이든 간에 
+
+
+여러종류의 서블릿이 수행할 내용을 개체에 담아서 보관해놓으면 다른 것들이 사용할 수 있다.
+
+객체공유에는 4가지가 있다.
+
+페이지 스코프는 그 서블릿 안에서만 쓸수 있다. JSP에서 페이지 스코프로 어떤 객체를 사용했으면 그안에서만 사용가능하다.
+
+REQUEST SCOPE는 요청이 끝날때 까지 공유한다.
+- 우리가 서블릿을 요청해서 바로 응답한다.
+A 서블릿 요청시 B에게 포워드 했을때 아직 요청이 안끝났을 때 그 때 의미가 있다.
+
+세션 스코프는 브라우저가 살아있는동안 공유 한다.
+
+일정시간동안 생성된 객체를 공유하겠다.
+
+세션객체는  서버에게 다시 요청했을때 살아 있따.
+
+APPLICATION SCOPE는 서버가 죽을때까지 유효하다.
+
+어플리케이션 스코프 카운팅한 객체는 어플리케이션 객체 사용
+
+예를 들어 내 홈페이지를 몇명이 방문했는가
+
+
+
+
+Page Scope : Servlet 또는 JSP가 수행되는 동안만 유효한 객체가 된다.
+객체 생성해서 지역변수에 담으면 PAGE 스코프다.
+
+USEBEAN 사용시 스코프 속성 생략가능
+어떤 빈클래스를 페이지 스코프로 적용하겠다 하면 
+
+페이지 스코프는 
+
+
+Request Scope : Web 클라이언트로 부터의 요청이 끝날 때까지 유효한 객체가 된다.
+객체생성해서 지역변수에 담아도 되고 페이지 컨텍스트에 보관해도 된다.
+\Request Scope  HttpServletRequest 객체에 객체를 보관한
+
+
+
+
+
+
+리퀘스트 스코프 적용해서 보관한다음에 JSP가 꺼내가게 하면 된다.
+리퀘스트 스코프를 서블릿해서 만들겠다 하면 객체 생성을 해서 HTTP REQUEST 객체에 보관하면 된다.
+
+Session Scope : 요청을 보내온 Web 클라이언트가 기동되어 있는 동안 유효한 객체가 된다.
+
+
+
+Application Scope : 서버가 기동되어 있는 동안 유효한 객체가 된다.
+
+서버가 죽을때 까지 객체를 사용하고자 한다면 ServletContext
+
+Request Scope  HttpServletRequest 객체에 객체를 보관한다.
+Session Scope  HttpSession 객체에 객체를 보관한다.
+Application Scope  ServletContext 객체에 객체를 보관한다.
+
+객체 생성 공유 삭제 메서드를 공통으로 가지고 있다. 
+
+----->
+public void setAttribute(String key, Object value)
+public Object getAttribute(String key)
+public void removeAttribute(String key
+\
+
+
+
+
+
+
+
+page  -- 다른 자원과 공유 불가
+Servlet 또는 JSP가
+처리되는 동안 생
+성된 JSP에서만 사용
+
+
+
+request
+요청이 처리되는 동안
+forward, Include되는
+다른 자원과 공유
+
+httpservletrequest
+
+
+
+
+session
+Session이 유지
+되는 동안 여러
+자원간에 공유
+재 요청 시 계속
+사용 가능
+
+httpsession
+
+application
+Servlet 컨테이너가
+기동되어 있는 동안
+동일한 Web Application
+에 속하는 모든 자원간에
+공유
+
+
+모든 객체를 저장해서 공유할때는 ServletContext
+
+
+\was의 객체의 개수만큼 서블릿이 만들어 진다.
+
+
+
+
+
+[ 요청 동안의 객체 공유 ]
+
+
+A와 B가 forward 또는
+include 관계에 있는 경
+우 A 가 생성하는 객체
+를 HttpServletRequest 
+객체에 보관하면 B 에
+서 추출할 수 있다. 요
+청이 끝나면 사라진다.
+
+
+forward 관계  
+
+a 만든 객체내용을 forawrd된 b 에서 만들고싶다하면 
+HttpServletRequest  여기에 보관
+
+여기에는 요청이 끝나면 사라진다.
+
+
+
+[ 세션이 유지되는 동안 각 클라이언트별 객체 공유 ]
+
+각 클라이언트별로 서버에 하나
+씩 만들어지는 HttpSession 객
+체에 객체를 보관하면 세션이
+유지되는 한 계속해서 클라이언
+트별로 이 객체를 꺼내서 사용
+할 수 있다.
+
+
+클라이언트 별로 각각의 세션 객체는 정해져 있다.
+
+
+
+[ 서버가 기동되어 있는 동안 모든 클라이언트에 의한 객체 공유 ]
+
+서버에 등록되는 Web
+Application 당 하나씩 만들어
+지는 ServletContext 객체에 객
+체를 보관하면 서버 종료시까지
+이 객체를 꺼내서 사용할 수 있
+다. 이 객체는 모든 클라이언트
+에 의해 공유된다
+
+
+
+
+
