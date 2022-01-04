@@ -6,6 +6,12 @@ http 프로토콜이 어떤 특징을 가지고 있는지 알고 있어야 된�
 
 http라는 프로토콜의 특징
 
+
+http 통신 프로토콜 기반 동작
+
+** http는 웹상에서 정보를 주고 받을 수 있는 프로토콜
+** 
+
 2
 first 서블릿 정보는 코드를 외우다 시피 해야한다.
 쿼리문자열 추출하는 코드라던지
@@ -39,7 +45,15 @@ getattribute의 특징
 
 세션과 관련된 여러 문제가 나옴
 
-
+- request.getSession() : HttpSession 객체를 추출하거나 새로이 생성한다. request.getSession(true) 와 동일하
+다. request.getSession(false) 는 HttpSession 객체를 추출하여 리턴하는데 없으면 null을
+리턴한다.
+ 
+- session.setAttribute(“xxx”, new Data()) : 보관하려는 정보를 객체로 만들어 HttpSession객체에 저장한다.
+ “xxx” 라는 이름으로 객체의 참조 값을 보관한다 .
+- session.getAttribute(“xxx”) : “xxx” 라는 이름으로 보관된 객체에 대한 참조 값을 리턴한다.
+- session.removeAttribute(“xxx”) : “xxx” 라는 이름으로 보관된 객체에 대한 참조 값을 삭제한다.
+- session.invalidate() : HttpSession 객체를 강제로 삭제한다
 
 
 
@@ -64,6 +78,7 @@ jsp 태그 중에
 
 8. 인클루드 지시자 태그에 대해서 다시 정리
 
+
 9. 포워드와 리다이렉트의 차이점 
 
 포워드는 언제 사용하는제
@@ -81,7 +96,7 @@ MVC 패턴이 어떤 건지
 
 
 
-12.  개
+12.
 
 객체 공유와 관련된 문제 2
 
