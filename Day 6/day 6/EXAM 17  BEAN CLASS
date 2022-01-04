@@ -1,0 +1,175 @@
+day 6
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"  import="jspbean.Today"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Dokdo:400" rel="stylesheet">
+</head>
+<body>
+<h1 style="font-family: 'Dokdo'">지금은
+<% Today obj = new Today(); %>   today라고 하는 아규먼트 받는 생성자  
+JSP에서 어떤 객체를 사용하고 싶은지 나타낸다.
+
+    
+    멤버변수와 메소드 정의를 제외하고
+    
+    이 두개는 선언문내에서 가능하다.
+    
+    
+    
+    
+<%=  obj.getYear() %>년 
+<%=  obj.getMonth() %>월 
+<%=  obj.getDate() %>일
+<%=  obj.getHour() %>시 
+<%=  obj.getMinute() %>분 입니당
+
+
+</h1>
+</body>
+</html>
+
+
+자바 클래스를 가져다 쓸수 있는 액션 태그가 있다.
+
+<jsp:include page=”…” />
+<jsp:forward page=”…” />
+ <jsp:param name=”…” value=”…” />
+ 
+ 
+ 여기서 
+ <jsp:useBean id=”…” class=”…” scope=”…” /> 
+ useBean은 jsp에서 사용가능한 자바 클래스를 의미 한다.
+ 
+ useBean은 객체를생성해서 사용하겠다.
+ 이때 생성된 객체를 보관된 변수를 id에 넣는다.
+ 
+ usebean은 여러번 사용할 수 있지만
+ 
+ id는 유니크 해야 한다.
+ 
+ scope 속성을 생략하면 jsp를 수행하는 동안에는 유효한 객체가 된다.
+ 
+ scope 속성을 어떻게 주느냐에 따라서 세션객체가 유지될때까지 유효한 객체
+ 서버가 유지 될때 까지유요한 객체
+ 
+ jsp에서 자바
+ 
+ useBean은 어떠한 자바 클래스를 사용할 수 있도록 객체를 생성하고 사용하겠다.
+ 
+ 찾아올때 이름 변수에 담을 때 변수의 이름은 id 속성에 의해 정해진다.
+ 
+getProperty 객체는 사용가능하 태그가 getProperty 액션태그는 자바 bean 에서 getter만 호출만하는 
+
+getter를 호출하고 리턴 결과도 출력 해준다.
+
+
+setProperty는 seter를 정하고 값을 호출하는것
+
+추출하는것은 getProperty의 역할
+
+todtjdehls wkqk qls rorcpdptj djEjgks tpxjsk rpxjfmf wjdgkrpTsmsisms ㅜ믇 thrtjddp dmlgo wjsdo
+
+진다.
+
+to day라는 bean을 id라는 값을 사용해서 사용가능한 값으로 만들었다. name 속성에는 id 값이 들어가야한다.
+
+<jsp:useBean id=”…” class=”…” scope=”…” />
+<jsp:setProperty name=”…” property=”…” />
+<jsp:getProperty name=”…” property=”…” />
+
+property 속성은 property 명을 주는 것이다.
+
+get이나 set을 땐 나머지 명칭은 첫글자만 소문자로 바꿔서 지정하는게 property 속성을 지정하는 것이다.
+
+
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"  %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Gamja+Flower:400" rel="stylesheet">
+</head>
+<body>
+<h1 style="font-family: 'Gamja Flower'">지금은
+<jsp:useBean id="obj" class="jspbean.Today" />   today라는 빈 클래스의 객체를 scope 속성이 생략되면 기본값은 페이지 이다.
+scope 속성이 생략되면 기본값은 페이지이다.
+기본 페이지에서만 사용가능한 자바 빈 클래스 객체를 무조건 생성한다.
+
+scope 속성을 어떻게 주느냐에 따라서 스코프 명을 찾는다.
+
+scope가 없기 때문에 today를 생성한것이ㅏ.
+
+생성된 자바 빈을 obj라는 명으로 생성하겠다.
+
+id의 값은 변수가 된다. today라는 정보는 객체를 생성하는 정보로 바뀌다.
+
+
+<jsp:getProperty name="obj"  property="year" />년 
+<jsp:getProperty name="obj"  property="month" />월 
+<jsp:getProperty name="obj"  property="date" />일
+<jsp:getProperty name="obj"  property="hour" />시 
+<jsp:getProperty name="obj"  property="minute" />분 입니당</h1>
+
+mvc 패턴에서는 요청은 서블릿이 받고 응답은 jsp가 받는다.
+
+getproperty위주이다.
+
+
+</body>
+</html>
+
+
+
+
+////////////////////EXAM 19
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"  import="jspbean.Today"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Poor+Story:400" rel="stylesheet">
+</head>
+<body>
+<h1 style="font-family: 'Poor Story';">지금은
+
+
+<%
+pageContext.setAttribute("obj", new Today());     여기는 스코프를 좀더 보고 결정한다.
+
+%>
+
+
+
+el?
+
+obj이라는 이름으로 저장된 객체를찾아라
+
+EXAM 18, 19 차이점 
+
+${obj.year}년 
+${obj.month}월 
+${obj.date}일
+${obj.hour}시 
+${obj.minute}분 입니당</h1>
+
+</body>
+</html>
+
+
+
+
+
+
