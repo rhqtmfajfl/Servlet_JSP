@@ -1,0 +1,130 @@
+
+
+초기에는 
+
+JSP로 뷰를 구현하던시기에는 컨트롤러 뷰 모델
+
+
+개발시 요청처리는 서블릿으로 응답처리는 JSP로 한다.
+
+
+EL은 EXPRESSION LANGUAGE의 약어
+
+어딘가에 담겨있는 애를 꺼내서 
+좀더 간단하게 표현하겠다라는 의미
+
+EL이라는 애가 JSP 2.0부터 
+
+EL은 $와 중괄호 { } 로 구현하는 것으로 표현하는것과
+
+
+<% out.println(request.getParameter(“q”)); %>
+
+
+OUT이라는 내장객체로 표현
+<% out.println(request.getParameter(“q”)); %>
+
+표현식으로 표현
+<%= request.getParameter(“q”) %>  표현식태그에는 식만 올수 있따.
+
+이것을 EL로 표현하게 되면
+
+${param.q} 또는 ${param[“q”]
+EL에서만 사용하는 내장 객체
+
+추출하고자 하는 쿼리는 q이다 이때 $나 {} 를 사용한다.
+
+q라는 이름으로 추출하여 표현해라
+
+EL 만의 내장 객체 파악하는게 중요
+
+하나의 네임에 하나의 VALUE가 오면 
+param을 쓰면 되고
+
+여러개의 value가 오면 
+
+paramValues가 오게 한다. 
+
+헤더.q
+
+헤더.{"q"}
+
+EL에서 자주 사용할 내장 객체
+
+pageContext - PageContext 객체
+pageScope - page 스코프에 포함된 객체들
+requestScope - request 스코프에 포함된 객체들
+sessionScope - session 스코프에 포함된 객체들
+applicationScope - application 스코프에 포함된 객체들
+param - HTTP의 파라메터들
+
+
+해시맥 객체를 참조하게 되어있다.
+
+
+
+pageContext - PageContext 객체
+
+EL의 내장 객체 이면서
+JSP의 내장 객체  (EL에서 사용하고 싶은 JSP의 내장객체를 꺼내온다.)
+
+
+
+
+${ sessionScope.cart.apple }
+
+이변수명이 MAP 객체냐 일반객체냐에 따라 해석이 달라진다.
+sessionScope.cart하면 car는 세션 객체다.
+
+cart라는 이름으로 보관되어있는 객체를 꺼내라
+productVO다 이거는 일반객체인데
+
+그때는 APPLE 뒤에오는 명칭은 GETTER메소드로 사용된다.
+
+EL에서는 SETTER를 사용하지 않는다.
+EL에서는 꺼내는것만 설게해놨지 넣는것은 고렿안함
+
+
+HTTP 세션객체안에 CART 라는 이름으로 보관되어있는 객체를 꺼내라
+
+.apple의 의미는 꺼낸객체를 getter 함수를 호출 해라는 의미이다.
+
+
+
+네임 벨류가 유니크하면 키벨류라고도 하다.
+
+
+out은 jsp 내장객체 
+
+
+param이 참조하는 것도 네임벨류
+
+
+
+
+
+- EL 에서의 . 연산자 
+ 변수명.xx
+ 
+ 이변수가 참조하는 대상이
+ 
+ 
+ 
+(1) 변수의 참조 대상이 일반 Java 객체이면 getXxx() 를 호출한 결과가 된다.
+
+(2) 변수의 참조 대상이 Map 객체이면 get(“xxx”) 을 호출한 결과가 된다.
+
+ apple
+ 
+ GET APPLE을 호출한다는 의미이다.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
