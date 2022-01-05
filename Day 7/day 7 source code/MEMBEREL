@@ -1,0 +1,117 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import="vo.MemberVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1> 회원정보</h1>
+<br>
+<hr>
+
+ <ul>
+ 	<li>회원 이름: ${requestScope.objtest.name}   맵 객체
+  맵이 아닐 경우GETTER 메서드의 프로퍼티로 사용된다.
+ 	<li>회원 계정: ${requestScope.objtest.userid}
+ 	<li>회원 암호: ${requestScope.objtest.pwd}
+ 	<li>회원 전화번호: ${requestScope.objtest.telnum}
+ </ul>
+	
+
+
+</body>
+</html>
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import = "vo.ProductVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3>선택된 상품의 정보는 다음과 같습니다.</h3>
+<hr>
+
+	선택된 사과의 개수 :${sessionScope.fruit.apple} 개<br>   프로덕 VO 객체가 fruit 로 되었고 apple 세션 객체안에 프로덕 보유 객체에서 apple을 가져온다.
+
+	선택된 바나나의 개수 : ${sessionScope.fruit.banana}개<br>
+
+	선택된 한라봉의 개수 : ${sessionScope.fruit.hala} 개<br>
+
+<br>
+<hr>
+
+	<a href=" /edu/htmlexam/product.html ">상품 선택화면</a>
+
+</body>
+</html>
+
+
+
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>연산 요청 결과</h1>
+<hr>
+결과 : ${requestScope.result }    requestScope.result  
+
+<br>
+<a href = "/edu/htmlexam/calcForm.html">입력화면</a>
+</body>
+</html>
+
+
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>    이정보를 바꿀 수 있다.
+${header.
+웹페이지에 대한 url이다.
+</head>
+<body>
+<h1> 요청을 처리하는 동안 오류가 발생했어요..</h1>
+
+오류의 원인:<span style="color:red">${requestScope.clac_error}</span> requestScope.clac_error  
+<br>
+<a href = ${header.referer}>입력화면</a>
+
+${header.xxx} 는 요청헤더에 담겨있는 네임 벨류쌍에서 xxx라는 벨류를 꺼내서
+
+${param.xxxx}  xxx라는 이름으로 전달되는 value를 꺼내서
+
+h p 나 el의 내장객체이다.
+
+${xxx} xxx로 보관된 이름의 객체를 꺼내서
+h
+</body>
+</html>
+
+
+
+
+
