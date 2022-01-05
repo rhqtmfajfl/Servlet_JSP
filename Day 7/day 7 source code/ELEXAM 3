@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EL 테스트</title>
+</head>
+<body>
+<h2>EL 변수</h2>
+<hr>
+name 변수의 값 : ${name}<br>   //여기서 name은 name이라는 이름으로 보관된 객체이다  el의 변수는 
+변수명을 어딘가에 보관되어있는 객체의 이름으로 생각해야한다.
+
+name이라는 이름으로 보관되어있는 객체의 내용을 보관해라 
+el은 없다고 에러가 발생하지 않는다.
+
+
+<% String name="듀크"; %>  여기서 일반 지역변수를 선언했다. 
+name 변수의 값(표현식 태그) : <%= name %><br>  그래서 여기서 듀크가 출력된다.
+
+
+name 변수의 값(EL) : ${name}<br>   여기서도 name이라는 객체를 꺼내서 표현하시오
+
+
+<% pageContext.setAttribute("name", "자바");  %>  name으로 pageContext로 가능
+
+이페이지 안에서만 사용가능하다
+pageContext는 jsp에서 사용이 끝나면 사라진다.
+name이라는 이름의 객체를 꺼내줘
+
+name 변수의 값 : ${name}<br>   //name이라는 객체를 불러오고   이 네임은 페이지 스코프에가서 꺼낸다 여기서 페이지 에서 업으면
+리퀘스트 슾코프 가고 여기서 없으며  세션 마지막으로 어플리케이션 까지 다 찾아서 꺼내려고 한다.
+
+
+pageScope.name 변수의 값 : ${pageScope.name}<br>   pageScope.name은 name이라는 이름의 객체를 찾아서 꺼내줘
+페이지 스코프 영역의 네미임 이라는 객체를 꺼내겠다. 이때 페이지 스코프ㅡㄴ 새ㅇ략 할 수 있다.
+
+<hr>
+<% pageContext.setAttribute("number", 100); %>  페이지 스코프이다 페이지 넘버라는 이름으로 저장한다.
+number 변수의 값 : ${number}<br>
+pageScope.number 변수의 값 : ${pageScope.number}<br>
+number 변수의 값에 23을 더한 값 : ${ number + 23 }
+</body>
+</html>
+
+
+
+
