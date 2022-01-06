@@ -1,0 +1,103 @@
+day 8
+
+
+Filter
+
+
+Filter는 유지보수시 유용한 것
+
+필터는 web server 프로그램에 도움이 되는 역할을 한다.
+
+servlet 기반으로 개발을 할 때 필터의 사용은 필수는 아니다.
+
+필터는 우선 자바클래스로 만드는 것이다.
+
+filter라는 인터페이스를 상속해서 개발하는 것이다.
+
+필터가 수행되게끔
+
+서블릿이 수행되기 전 수행되고 나서 역할을 할 수 있는것이 필터이다.
+
+
+
+필터는 
+was가 로그를 처리할 수 있다 그런데 그것은 was가 마음대로 처리하는것
+
+그렇다면 우리 원하는 대로 로그를 처리하고자 한다면 필터를 사용
+
+한글 필터
+
+post 방식으로 요청 받을 때마다
+
+
+서블릿이 수행되고 나서 최종적으로 응답하고 나서
+사용
+
+
+
+
+
+
+
+
+
+
+
+그림 
+
+필터를 3개를 동록 한다
+
+s1은 f1 f3
+
+s2 f1 f2 f3
+
+s3 
+f1만 적용되게 하는것
+
+
+필터를 거치는데는 개수 제한이 없다.
+
+첫번째 두번째 세번째 필터
+
+
+
+필터객체ㅐ기ㅏ 메모리에서 사라질때
+
+
+필터도 한번생성되면서버 죽을때까지 유지된다.
+
+서버 기동 될때 미리 객체를 생성 시켜 놓는다.
+
+dofilter의 매개변수에 servlet req
+
+servletResponse
+
+filterChain객체는 다음에 수행될 서블릿을 직접 호출한다.
+
+체인점 dofilter는
+
+필터체인객체에 do필터를 처리한다.
+
+servlet이 수행되기 전에 
+
+public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+ throws IOException, ServletException {
+ // 웹 자원의 수행 전에 처리할 기능
+ chain.doFilter(req, res);
+ // 웹 자원의 수행 후에 처리할 기능
+}
+
+
+수행전 dofilter는 필수이다.
+
+필터만 수행되고 서블릿은 실행 되지 않는다.   클라이언트가 어떤 
+
+
+
+first서블릿이 실행 될때 실행 되는 filter
+
+의 매핑명은 first
+
+
+servlet first가 실행될때 필터 사용해서 매핑명 filter 적용
+
